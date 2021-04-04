@@ -1,4 +1,4 @@
-# SC144 LCD1602 I2C Turbo Pascal 3 Driver
+# LCD1602 I2C Turbo Pascal 3 Driver
 Demo of LCD1602 display connected with I2C to SC144 I2C bus master.
 
 # How to run
