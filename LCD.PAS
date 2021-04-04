@@ -36,7 +36,9 @@ begin
   write('Press ENTER to turn off backlight and exit test program'); readln;
   lcdWriteAt(1, 2, 'I2C to LCD1602');
   lcdWriteAt(2, 1, '-- TESTS DONE --');
+
   delay(3000);
+
   lcd_backlightVal := 0;
-  lcdCursor(1,1); { dummy operation to turn off backlight }
+  lcdClrHome;
 end.
