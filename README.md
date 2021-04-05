@@ -1,5 +1,5 @@
 # LCD1602 I2C Turbo Pascal 3 Driver
-Demo of LCD1602 display connected with I2C to SC144 I2C bus master. Developed with Turbo Pascal 3.02A.
+Demo of LCD1602 display connected with I2C to SC144 I2C bus master. Developed with Turbo Pascal 3.02A on CP/M 3.
 
 # Compatibility and Limitations
 A few things to note: The software has *only* been tested with SC140/SC144 and SC126 at 18 MHz. It is only configured for a 16x2 display, so don't expect it to work with anything else, like 20x4. My LCD has a HD44780 controller, anything else probably won't work.
