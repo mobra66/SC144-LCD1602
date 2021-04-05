@@ -5,7 +5,7 @@ Demo of LCD1602 display connected with I2C to SC144 I2C bus master.
 Copy the three .PAS files to your CP/M computer, compile and run LCD.PAS using Turbo Pascal 3.
 Make sure your LCD is properly connected to the SC144 I2C bus (or SC126 I2C connector).
 
-This code was tested on SC140 mainboard and SC144 I2C bus master with an HD44780 compatible 16x2 character LCD display with I2C connector, using 4-bit interface mode.
+This code was tested on SC140 mainboard and SC144 I2C bus master with an HD44780 compatible 16x2 character LCD display with I2C connector, using 4-bit interface mode. Also tested on SC126. Both boards running 18 MHz Z180 CPU. 
 
 # Structure
 The LCD.PAS main program include I2CLIB.PAS and LCDLIB.PAS. The includes must be in this order, because LCDLIB depends on I2CLIB.
