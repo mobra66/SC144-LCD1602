@@ -14,3 +14,9 @@ You must define the const DEVICE_WR with the I2C address of the LCD1602 before t
 
 LCDLIB defines the type lcdString as a string of 16 chars. Also note the global variable lcd_backlightVal which must be set to LCD_Bl to enable backlight, if you want that.
 
+# References
+* https://www.sparkfun.com/datasheets/LCD/HD44780.pdf
+* https://en.wikipedia.org/wiki/Hitachi_HD44780_LCD_controller
+* https://www.8051projects.net/lcd-interfacing/lcd-4-bit.php
+
+
