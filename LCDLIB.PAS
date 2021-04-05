@@ -34,6 +34,11 @@ var
 
   { Driver code for LCD1602 }
 
+  procedure waitMillis(millis: integer);
+  begin
+    delay(millis);
+  end;
+
   procedure sendInstructionCode(rs, rw, data: byte);
   var hi, hi_en, lo, lo_en, mode, an: byte;
   begin
@@ -46,17 +51,17 @@ var
 
     startSequence;
     an := writeByte(DEVICE_WR);
-    an := writeByte(hi);
     an := writeByte(hi_en);
-    an := writeByte(lo);
+    an := writeByte(hi);
     an := writeByte(lo_en);
+    an := writeByte(lo);
     endSequence;
   end;
 
   procedure lcdClrHome;
   begin
     sendInstructionCode(RS_INST, RW_WRITE, $02); { RETURN HOME }
-    delay(2);
+    waitMillis(2);
     sendInstructionCode(RS_INST, RW_WRITE, $01); { CLR DISP }
     sendInstructionCode(RS_INST, RW_WRITE, $0C); { DISP ON/OFF D=1 (display on), C=0 (no cursor), B=0 (no cursor blink) }
   end;
@@ -66,7 +71,7 @@ var
   begin
     offset := (line - 1) * $40 + column - 1;
     sendInstructionCode(RS_INST, RW_WRITE, $02); { RETURN HOME }
-    delay(2);
+    waitMillis(2);
     sendInstructionCode(RS_INST, RW_WRITE, $0C); { DISP ON/OFF D=1 (display on), C=0 (no cursor), B=0 (no cursor blink) }
     sendInstructionCode(RS_INST, RW_WRITE, $80 or offset); { DDRAM AD SET }
   end;
@@ -82,10 +87,10 @@ var
         The following data sequence is described in the HD44780U datasheet.
         It is the 4-bit initialization figure 24 on page 46.
       }
-      delay(15); ack_nack := writeByte($30); { FUNC SET 8-bit interface }
-      delay(5);  ack_nack := writeByte($30); { FUNC SET 8-bit interface }
-      delay(1);  ack_nack := writeByte($30); { FUNC SET 8-bit interface }
-      ack_nack := writeByte($20); { FUNC SET 4-bit interface }
+      waitMillis(15); ack_nack := writeByte($34); ack_nack := writeByte($30); { FUNC SET 8-bit interface }
+      waitMillis(5);  ack_nack := writeByte($34); ack_nack := writeByte($30); { FUNC SET 8-bit interface }
+      waitMillis(1);  ack_nack := writeByte($34); ack_nack := writeByte($30); { FUNC SET 8-bit interface }
+      ack_nack := writeByte($24); ack_nack := writeByte($20); { FUNC SET 4-bit interface }
       endSequence;
       {
         End of Hitachi HD44780U initalization procedure.
