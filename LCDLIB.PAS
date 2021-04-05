@@ -61,7 +61,7 @@ var
   procedure lcdClrHome;
   begin
     sendInstructionCode(RS_INST, RW_WRITE, $02); { RETURN HOME }
-    waitMillis(2);
+    waitMillis(3);
     sendInstructionCode(RS_INST, RW_WRITE, $01); { CLR DISP }
     sendInstructionCode(RS_INST, RW_WRITE, $0C); { DISP ON/OFF D=1 (display on), C=0 (no cursor), B=0 (no cursor blink) }
   end;
@@ -71,7 +71,7 @@ var
   begin
     offset := (line - 1) * $40 + column - 1;
     sendInstructionCode(RS_INST, RW_WRITE, $02); { RETURN HOME }
-    waitMillis(2);
+    waitMillis(3);
     sendInstructionCode(RS_INST, RW_WRITE, $0C); { DISP ON/OFF D=1 (display on), C=0 (no cursor), B=0 (no cursor blink) }
     sendInstructionCode(RS_INST, RW_WRITE, $80 or offset); { DDRAM AD SET }
   end;
@@ -86,10 +86,11 @@ var
       {
         The following data sequence is described in the HD44780U datasheet.
         It is the 4-bit initialization figure 24 on page 46.
+        Adding a +5 ms "slack" to the delay values, just in case.
       }
-      waitMillis(15); ack_nack := writeByte($34); ack_nack := writeByte($30); { FUNC SET 8-bit interface }
-      waitMillis(5);  ack_nack := writeByte($34); ack_nack := writeByte($30); { FUNC SET 8-bit interface }
-      waitMillis(1);  ack_nack := writeByte($34); ack_nack := writeByte($30); { FUNC SET 8-bit interface }
+      waitMillis(15+5); ack_nack := writeByte($34); ack_nack := writeByte($30); { FUNC SET 8-bit interface }
+      waitMillis(5+5);  ack_nack := writeByte($34); ack_nack := writeByte($30); { FUNC SET 8-bit interface }
+      waitMillis(1+5);  ack_nack := writeByte($34); ack_nack := writeByte($30); { FUNC SET 8-bit interface }
       ack_nack := writeByte($24); ack_nack := writeByte($20); { FUNC SET 4-bit interface }
       endSequence;
       {
