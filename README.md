@@ -3,7 +3,7 @@ Demo of LCD1602 display connected with I2C to SC144 I2C bus master. Developed wi
 
 # Compatibility and Limitations
 A few things to note: The software has *only* been tested with SC140/SC144 and SC126 at 18 MHz. It is only configured for a 16x2 display, so don't expect it to work with anything else, like 20x4. My LCD has a HD44780 controller, anything else probably won't work.
-Also, make sure your Turbo Pascal has been configured for the correct CPU frequency using TINST.COM. THe program uses delays which are wrong if the Turbo Pascal is not configured. This also means you cannot move a .COM file from one system to another if CPU is a different frequency. You must then compile it again with a Turbo Pascal configured for that CPU.
+Also, make sure your Turbo Pascal has been configured for the correct CPU frequency using TINST.COM. The program uses delays which are wrong if the Turbo Pascal is not configured. This also means you cannot move a .COM file from one system to another if CPU is a different frequency. You must then compile it again with a Turbo Pascal configured for that CPU.
 
 # How to run
 Copy the three .PAS files to your CP/M computer, compile and run LCD.PAS using Turbo Pascal.
